@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+
+import 'colors.dart';
+
+class AppTheme {
+  static ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: AppColors.backgroundLight,
+    primaryColor: AppColors.lilac,
+    colorScheme: ColorScheme.light(
+      primary: AppColors.lilac,
+      secondary: AppColors.accent,
+      background: AppColors.backgroundLight,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.lightBlue,
+      foregroundColor: AppColors.textLight,
+      elevation: 0,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.accent,
+        foregroundColor: AppColors.textLight,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.softBeige,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide.none,
+      ),
+      hintStyle: TextStyle(color: AppColors.textLight),
+    ),
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: AppColors.pinky,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 16,
+        color: AppColors.textLight,
+      ),
+    ),
+  );
+
+  static ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.backgroundDark,
+    primaryColor: AppColors.pinky,
+    colorScheme: ColorScheme.dark(
+      primary: AppColors.pinky,
+      secondary: AppColors.accent,
+      background: AppColors.backgroundDark,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.pinky,
+      foregroundColor: AppColors.textDark,
+      elevation: 0,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.pinky,
+        foregroundColor: AppColors.textDark,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.grey[800],
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide.none,
+      ),
+      hintStyle: TextStyle(color: AppColors.textDark),
+    ),
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: AppColors.accent,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 16,
+        color: AppColors.textDark,
+      ),
+    ),
+  );
+}
