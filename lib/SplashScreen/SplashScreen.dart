@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'dart:async';
 
 import 'package:pulse_of_sound/LoginScreens/loginscreen.dart';

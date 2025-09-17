@@ -7,12 +7,12 @@ class AppTheme {
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.backgroundLight,
     primaryColor: AppColors.lilac,
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary: AppColors.lilac,
       secondary: AppColors.accent,
-      background: AppColors.backgroundLight,
+      surface: AppColors.backgroundLight,
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.lightBlue,
       foregroundColor: AppColors.textLight,
       elevation: 0,
@@ -33,9 +33,9 @@ class AppTheme {
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide.none,
       ),
-      hintStyle: TextStyle(color: AppColors.textLight),
+      hintStyle: const TextStyle(color: AppColors.textLight),
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headlineSmall: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
@@ -46,18 +46,34 @@ class AppTheme {
         color: AppColors.textLight,
       ),
     ),
+    dialogTheme: DialogTheme(
+  backgroundColor: Colors.white, // خلفية بيضاء
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(16),
+  ),
+  titleTextStyle: const TextStyle(
+    color: Color(0xFF1A237E), // أزرق غامق
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  ),
+  contentTextStyle: const TextStyle(
+    color: Colors.black87,
+    fontSize: 16,
+  ),
+),
+
   );
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.backgroundDark,
     primaryColor: AppColors.pinky,
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
       primary: AppColors.pinky,
       secondary: AppColors.accent,
-      background: AppColors.backgroundDark,
+      surface: AppColors.backgroundDark,
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.pinky,
       foregroundColor: AppColors.textDark,
       elevation: 0,
@@ -78,9 +94,9 @@ class AppTheme {
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide.none,
       ),
-      hintStyle: TextStyle(color: AppColors.textDark),
+      hintStyle: const TextStyle(color: AppColors.textDark),
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headlineSmall: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
@@ -91,5 +107,21 @@ class AppTheme {
         color: AppColors.textDark,
       ),
     ),
+    dialogTheme: DialogTheme(
+  backgroundColor: Colors.grey[850],
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(16),
+  ),
+  titleTextStyle: const TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  ),
+  contentTextStyle: const TextStyle(
+    color: Colors.white70,
+    fontSize: 16,
+  ),
+),
+
   );
 }

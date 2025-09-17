@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../HomeScreen.dart';
+import '../HomeScreens/HomeScreen.dart';
+import 'loginscreen.dart';
 
 class OtpScreen extends StatefulWidget {
   final String phone;
@@ -13,7 +14,7 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> {
   final List<TextEditingController> _controllers =
-      List.generate(4, (index) => TextEditingController());
+      List.generate(6, (index) => TextEditingController());
 
   int _seconds = 30;
   Timer? _timer;
@@ -49,16 +50,28 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   void dispose() {
     _timer?.cancel();
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
   Future<void> _verifyOtp() async {
     String code = _controllers.map((c) => c.text).join();
 
-    if (code == "1234") {
+    if (code == "123456") {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool("hasSession", true);
       await prefs.setString("phone", widget.phone);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(" تسجيل الدخول ناجح"),
+          backgroundColor: Colors.green,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+      );
 
       Navigator.pushReplacement(
         context,
@@ -66,9 +79,11 @@ class _OtpScreenState extends State<OtpScreen> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("الكود غير صحيح"),
-          backgroundColor: Color(0xFFE57373),
+        SnackBar(
+          content: const Text(" الكود غير صحيح"),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
       );
     }
@@ -76,7 +91,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   Widget _buildOtpBox(int index) {
     return SizedBox(
-      width: 55,
+      width: 50,
       child: TextField(
         controller: _controllers[index],
         keyboardType: TextInputType.number,
@@ -85,7 +100,7 @@ class _OtpScreenState extends State<OtpScreen> {
         style: const TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.bold,
-          color: Color(0xFF1A237E), 
+          color: Color(0xFF1A237E),
         ),
         decoration: InputDecoration(
           counterText: "",
@@ -112,6 +127,8 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
+ 
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -128,24 +145,45 @@ class _OtpScreenState extends State<OtpScreen> {
               ),
             ),
           ),
+
+          
+          Positioned(
+            top: 30,
+            left: 16,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Color(0xFF1A237E), size: 30),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                );
+              },
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "أدخل رمز التحقق: ",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                               
+                const Text(
+                  "أدخل رمز التحقق",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
                     color: Color(0xFF1A237E),
-                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "تم إرسال الرمز ",
+                  style: const TextStyle(fontSize: 14, color: Colors.black87),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(4, (index) => _buildOtpBox(index)),
+                  children: List.generate(6, (index) => _buildOtpBox(index)),
                 ),
                 const SizedBox(height: 40),
                 ElevatedButton(
@@ -167,9 +205,11 @@ class _OtpScreenState extends State<OtpScreen> {
                 canResend
                     ? TextButton(
                         onPressed: () {
-                          //   طلب جديد للباك لإرسال الكود
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text("تم إرسال رمز جديد")),
+                            const SnackBar(
+                              content: Text(" تم إرسال رمز جديد"),
+                              backgroundColor: Colors.orange,
+                            ),
                           );
                           _startTimer();
                         },
@@ -183,8 +223,9 @@ class _OtpScreenState extends State<OtpScreen> {
                       )
                     : Text(
                         "يمكنك إعادة الإرسال خلال $_seconds ثانية",
-                        style: const TextStyle( color: Color(0xFF1A237E)),
+                        style: const TextStyle(color: Color(0xFF1A237E)),
                       ),
+        
               ],
             ),
           ),

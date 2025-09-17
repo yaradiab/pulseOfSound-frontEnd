@@ -5,7 +5,6 @@ import 'package:pulse_of_sound/SplashScreen/SplashScreen.dart';
 
 void main() {
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
@@ -14,16 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
-          debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
-           darkTheme: AppTheme.darkTheme,
+            darkTheme: AppTheme.darkTheme,
             //themeMode: ThemeMode.system,
-           
-            home: SplashScreen());
+
+            home: const SplashScreen());
       },
     );
   }
