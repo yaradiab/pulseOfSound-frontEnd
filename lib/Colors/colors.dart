@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // ألوان ناعمة ومريحة
-  static const Color lavender   = Color(0xFFF4E7F8); // بنفسجي فاتح جدا
-  static const Color softBeige  = Color(0xFFF2DDDC); // بيج وردي
-  static const Color peach      = Color(0xFFF6B6BA); // خوخي/وردي دافئ
-  static const Color pinky      = Color(0xFFE3AADD); // وردي بنفسجي
-  static const Color lilac      = Color(0xFFC8A8E9); // ليلكي
-  static const Color lightBlue  = Color(0xFFC3C7F4); // أزرق باستيل
+  // ألوان الباستيل من اللوحة
+  static const Color pink = Color(0xFFEAA2C3);
+  static const Color babyPink = Color(0xFFF3C8DE);
+  static const Color pastelBlue = Color(0xFFAAB8CE);
+  static const Color peach = Color(0xFFF8DFC2);
+  static const Color skyBlue = Color(0xFF70B4D9);
+  static const Color butter = Color(0xFFFEF2CF);
+  static const Color babyBlue = Color.fromARGB(255, 228, 246, 249);
+  // خلفيات
+  static const Color backgroundLight = Color(0xFFFDFDFD);
+  static const Color backgroundDark = Color(0xFF1C1C1C);
 
-  // خلفيات ونصوص
-  static const Color backgroundLight = lavender;
-  static const Color backgroundDark  = Colors.black;
+  // نصوص
   static const Color textLight = Colors.black87;
-  static const Color textDark  = Colors.white70;
+  static const Color textDark = Colors.white70;
 
   // ألوان تفاعلية
-  static const Color accent = peach;
+  static const Color accent = pink;
 }

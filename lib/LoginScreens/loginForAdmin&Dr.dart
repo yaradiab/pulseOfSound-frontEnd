@@ -20,24 +20,30 @@ class _LoginForAdminAndDrState extends State<LoginForAdminAndDr> {
 
     if (username == "admin" && password == "1234") {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(" مرحباً Admin"), backgroundColor: Colors.green),
+        const SnackBar(
+            content: Text(" مرحباً Admin"),
+            backgroundColor: Color.fromARGB(54, 0, 0, 0)),
       );
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (_) => const AdminHomeScreen()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => const AdminHome()));
     }
 
     if (username == "doctor" && password == "4321") {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(" مرحباً دكتور"), backgroundColor: Colors.green),
+        const SnackBar(
+            content: Text(" مرحباً دكتور"),
+            backgroundColor: Color.fromARGB(54, 0, 0, 0)),
       );
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (_) => const Doctorhomescreen()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => const Doctorhomescreen()));
     }
 
     if (!(username == "admin" && password == "1234") &&
         !(username == "doctor" && password == "4321")) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(" اسم المستخدم أو كلمة المرور غير صحيحة"), backgroundColor: Colors.red),
+        const SnackBar(
+            content: Text(" اسم المستخدم أو كلمة المرور غير صحيحة"),
+            backgroundColor: Color.fromARGB(87, 0, 0, 0)),
       );
     }
   }
@@ -45,8 +51,6 @@ class _LoginForAdminAndDrState extends State<LoginForAdminAndDr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-  
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -63,13 +67,12 @@ class _LoginForAdminAndDrState extends State<LoginForAdminAndDr> {
               ),
             ),
           ),
-
-          
           Positioned(
             top: 30,
             left: 16,
             child: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Color(0xFF1A237E), size: 30),
+              icon: const Icon(Icons.arrow_back,
+                  color: Color(0xFF1A237E), size: 30),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -96,7 +99,8 @@ class _LoginForAdminAndDrState extends State<LoginForAdminAndDr> {
                   controller: _usernameController,
                   style: const TextStyle(color: Color(0xFF1A237E)),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.person, color: Color(0xFF1A237E)),
+                    prefixIcon:
+                        const Icon(Icons.person, color: Color(0xFF1A237E)),
                     labelText: "اسم المستخدم",
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.9),
@@ -112,7 +116,8 @@ class _LoginForAdminAndDrState extends State<LoginForAdminAndDr> {
                   obscureText: true,
                   style: const TextStyle(color: Color(0xFF1A237E)),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.lock, color: Color(0xFF1A237E)),
+                    prefixIcon:
+                        const Icon(Icons.lock, color: Color(0xFF1A237E)),
                     labelText: "كلمة المرور",
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.9),
@@ -130,8 +135,11 @@ class _LoginForAdminAndDrState extends State<LoginForAdminAndDr> {
                     foregroundColor: const Color(0xFF1A237E),
                     minimumSize: const Size(double.infinity, 50),
                   ),
-                  child: const Text("تسجيل الدخول",style: TextStyle(fontWeight: FontWeight.bold,color:Color(0xFF1A237E) ),)
-                  ,
+                  child: const Text(
+                    "تسجيل الدخول",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Color(0xFF1A237E)),
+                  ),
                 ),
               ],
             ),

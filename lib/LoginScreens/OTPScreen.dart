@@ -67,9 +67,10 @@ class _OtpScreenState extends State<OtpScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text(" تسجيل الدخول ناجح"),
-          backgroundColor: Colors.green,
+          backgroundColor: const Color.fromARGB(53, 0, 0, 0),
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
       );
 
@@ -81,9 +82,10 @@ class _OtpScreenState extends State<OtpScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text(" الكود غير صحيح"),
-          backgroundColor: Colors.red,
+          backgroundColor: const Color.fromARGB(134, 0, 0, 0),
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
       );
     }
@@ -127,8 +129,6 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
- 
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -145,13 +145,12 @@ class _OtpScreenState extends State<OtpScreen> {
               ),
             ),
           ),
-
-          
           Positioned(
             top: 30,
             left: 16,
             child: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Color(0xFF1A237E), size: 30),
+              icon: const Icon(Icons.arrow_back,
+                  color: Color(0xFF1A237E), size: 30),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -165,7 +164,6 @@ class _OtpScreenState extends State<OtpScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                               
                 const Text(
                   "أدخل رمز التحقق",
                   style: TextStyle(
@@ -175,9 +173,9 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Text(
+                const Text(
                   "تم إرسال الرمز ",
-                  style: const TextStyle(fontSize: 14, color: Colors.black87),
+                  style: TextStyle(fontSize: 14, color: Colors.black87),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 30),
@@ -225,7 +223,6 @@ class _OtpScreenState extends State<OtpScreen> {
                         "يمكنك إعادة الإرسال خلال $_seconds ثانية",
                         style: const TextStyle(color: Color(0xFF1A237E)),
                       ),
-        
               ],
             ),
           ),

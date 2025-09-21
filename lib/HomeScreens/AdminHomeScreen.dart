@@ -1,94 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:pulse_of_sound/SuperAdminScreens/DashBoard/dashBoard.dart';
+import 'package:pulse_of_sound/SuperAdminScreens/Specialists/specialistScreen.dart';
+import '../SuperAdminScreens/Admin/adminScreen.dart';
+import '../SuperAdminScreens/Childrens/chidScreen.dart';
+import '../SuperAdminScreens/Doctors/doctorsScreen.dart';
 import '../Colors/colors.dart';
 
-
-class AdminHomeScreen extends StatelessWidget {
-  const AdminHomeScreen({super.key});
-
-  final List<_AdminCardItem> _items = const [
-    _AdminCardItem(title: "لوحة التحكم", icon: Icons.dashboard, color: AppColors.lightBlue),
-    _AdminCardItem(title: "الأطباء", icon: Icons.medical_services, color: AppColors.peach),
-    _AdminCardItem(title: "الأخصائيين", icon: Icons.psychology, color: AppColors.lilac),
-    _AdminCardItem(title: "الأطفال", icon: Icons.child_care, color: AppColors.pinky),
-    _AdminCardItem(title: "المدراء", icon: Icons.admin_panel_settings, color: AppColors.softBeige),
-  ];
+class AdminHome extends StatelessWidget {
+  const AdminHome({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          // خلفية بتدرج
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [AppColors.lavender, AppColors.lightBlue],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 1,
-              ),
-              itemCount: _items.length,
-              itemBuilder: (context, index) {
-                final item = _items[index];
-                return _buildCard(context, item);
-              },
-            ),
-          ),
-        ],
+      appBar: AppBar(
+        title: const Text("إدارة النظام"),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
-    );
-  }
-
-  Widget _buildCard(BuildContext context, _AdminCardItem item) {
-    return InkWell(
-      onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("فتحت صفحة ${item.title}")),
-        );
-      },
-      borderRadius: BorderRadius.circular(20),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        elevation: 6,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
           children: [
-            CircleAvatar(
-              backgroundColor: item.color.withOpacity(0.2),
-              radius: 32,
-              child: Icon(item.icon, size: 40, color: item.color),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              item.title,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: AppColors.textLight,
-                  ),
-            ),
+            _buildCard(context, "لوحة التحكم", "icons/icons8-dashboard-40.png",
+                const Dashboard()),
+            _buildCard(context, "الأطباء", "icons/icons8-doctors-60.png",
+                const DoctorsPage()),
+            _buildCard(
+                context,
+                "الأخصائيين",
+                "icons/icons8-mental-health-64.png",
+                const Specialistseditscreen()),
+            _buildCard(context, "الأطفال", "icons/icons8-children-64.png",
+                const Chidreneditscreen()),
+            _buildCard(context, "الأدمن", "icons/icons8-admin-50.png",
+                const Admineditscreen()),
           ],
         ),
       ),
     );
   }
-}
 
-class _AdminCardItem {
-  final String title;
-  final IconData icon;
-  final Color color;
-
-  const _AdminCardItem({required this.title, required this.icon, required this.color});
+  Widget _buildCard(
+      BuildContext context, String title, String iconPath, Widget page) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => page),
+        );
+      },
+      child: Card(
+        color: AppColors.pastelBlue,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        elevation: 4,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircleAvatar(
+                radius: 28,
+                backgroundColor: Colors.white.withOpacity(0.9),
+                child: Image.asset(
+                  iconPath,
+                  width: 30,
+                  height: 30,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -6,20 +6,20 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.backgroundLight,
-    primaryColor: AppColors.lilac,
+    primaryColor: AppColors.skyBlue,
     colorScheme: const ColorScheme.light(
-      primary: AppColors.lilac,
-      secondary: AppColors.accent,
+      primary: AppColors.skyBlue,
+      secondary: AppColors.peach,
       surface: AppColors.backgroundLight,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.lightBlue,
+      backgroundColor: AppColors.babyPink,
       foregroundColor: AppColors.textLight,
       elevation: 0,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.accent,
+        backgroundColor: AppColors.pink,
         foregroundColor: AppColors.textLight,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
@@ -28,7 +28,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: AppColors.softBeige,
+      fillColor: AppColors.babyBlue,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide.none,
@@ -39,48 +39,32 @@ class AppTheme {
       headlineSmall: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
-        color: AppColors.pinky,
+        color: AppColors.pink,
       ),
       bodyMedium: TextStyle(
         fontSize: 16,
         color: AppColors.textLight,
       ),
     ),
-    dialogTheme: DialogTheme(
-  backgroundColor: Colors.white, // خلفية بيضاء
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(16),
-  ),
-  titleTextStyle: const TextStyle(
-    color: Color(0xFF1A237E), // أزرق غامق
-    fontWeight: FontWeight.bold,
-    fontSize: 18,
-  ),
-  contentTextStyle: const TextStyle(
-    color: Colors.black87,
-    fontSize: 16,
-  ),
-),
-
   );
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.backgroundDark,
-    primaryColor: AppColors.pinky,
+    primaryColor: AppColors.pastelBlue,
     colorScheme: const ColorScheme.dark(
-      primary: AppColors.pinky,
-      secondary: AppColors.accent,
+      primary: AppColors.pastelBlue,
+      secondary: AppColors.butter,
       surface: AppColors.backgroundDark,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.pinky,
+      backgroundColor: AppColors.pastelBlue,
       foregroundColor: AppColors.textDark,
       elevation: 0,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.pinky,
+        backgroundColor: AppColors.butter,
         foregroundColor: AppColors.textDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
@@ -100,28 +84,12 @@ class AppTheme {
       headlineSmall: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
-        color: AppColors.accent,
+        color: AppColors.butter,
       ),
       bodyMedium: TextStyle(
         fontSize: 16,
         color: AppColors.textDark,
       ),
     ),
-    dialogTheme: DialogTheme(
-  backgroundColor: Colors.grey[850],
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(16),
-  ),
-  titleTextStyle: const TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.bold,
-    fontSize: 18,
-  ),
-  contentTextStyle: const TextStyle(
-    color: Colors.white70,
-    fontSize: 16,
-  ),
-),
-
   );
 }
