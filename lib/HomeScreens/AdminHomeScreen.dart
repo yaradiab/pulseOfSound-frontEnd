@@ -28,11 +28,8 @@ class AdminHome extends StatelessWidget {
                 const Dashboard()),
             _buildCard(context, "الأطباء", "icons/icons8-doctors-60.png",
                 const DoctorsPage()),
-            _buildCard(
-                context,
-                "الأخصائيين",
-                "icons/icons8-mental-health-64.png",
-                const Specialistseditscreen()),
+            _buildCard(context, "الأخصائيين",
+                "icons/icons8-mental-health-64.png", const SpecialistsPage()),
             _buildCard(context, "الأطفال", "icons/icons8-children-64.png",
                 const Chidreneditscreen()),
             _buildCard(context, "الأدمن", "icons/icons8-admin-50.png",
